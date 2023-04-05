@@ -1,18 +1,10 @@
 import React from 'react';
 import Layout from '@/components/layout'
 import Link from 'next/link'
-import { Carousel, Image } from 'antd';
+import { Carousel } from 'antd';
 // import 'antd/dist/reset.css';
 import {API_SLIDER} from './api/value'
-
-const contentStyle: React.CSSProperties = {
-  margin: 0,
-  height: '160px',
-  color: '#fff',
-  lineHeight: '160px',
-  textAlign: 'center',
-  background: '#364d79',
-};
+import Image from 'next/image';
 
 
 function IndexPage(data: any) {
@@ -56,7 +48,7 @@ function IndexPage(data: any) {
 
   let dataSliders = data.data.data  &&   data.data.data[0] &&   data.data.data[0].attributes.Files;
 
-  console.log("dataSliders",dataSliders)
+
   return (
     <Layout title="Home | Next.js + TypeScript Example">
     <h1>Hello Next.js 👋</h1>
@@ -69,9 +61,11 @@ function IndexPage(data: any) {
     {dataSliders.map((item: any) => (
       <div key={item.id}>
          <Image
-
         src={item.File.data.attributes.url}
-        preview={false}
+        width={1920}
+        height={1280}
+        alt="Picture of the author"
+        priority
       />
       </div>
     ))}
